@@ -1,0 +1,18 @@
+<head>
+  <style>
+    .header {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+
+<header class="header">
+  <h1>Tracks hit an error!</h1>
+</header>
+<h2><%= @error.message %></h2>
+  <ul>
+    <% @error.backtrace.each do |trace| %>
+    <li><%= trace %></li>
+    <% end %>
+  </ul>
