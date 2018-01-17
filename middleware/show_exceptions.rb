@@ -24,5 +24,4 @@ class ShowExceptions
     ['500', {'Content-type' => 'text/html'}, [body]]
   end
 
-
 end
