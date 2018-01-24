@@ -1,8 +1,8 @@
 require_relative 'db_connection'
 require 'active_support/inflector'
-require 'byebug'
 
-class SQLObject
+class ModelBase
+  extend Associatable
   def self.columns
     return @columns if @columns
     columns = DBConnection.execute2(<<-SQL)
@@ -125,4 +125,24 @@ class SQLObject
       self.insert
     end
   end
+
+  def where(params)
+    search_line = []
+    values = []
+    params.each do |col, value|
+      search_line << "#{col} = ?"
+      values << value
+    end
+    search_line = search_line.join(' AND ')
+    results = DBConnection.execute(<<-SQL, *values)
+      SELECT
+        *
+      FROM
+        #{self.table_name}
+      WHERE
+        #{search_line}
+    SQL
+    parse_all(results)
+  end
+
 end
