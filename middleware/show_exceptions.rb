@@ -17,7 +17,7 @@ class ShowExceptions
 
   def render_exception(e)
     dir_path = File.dirname(__FILE__)
-    template_name = File.join(dir_path, "templates", "rescue.html.erb")
+    template_name = File.join(dir_path, "..", "views", "templates", "rescue.html.erb")
     template = File.read(template_name)
     @error = e
     body = ERB.new(template).result(binding)
