@@ -2,8 +2,8 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'active_support/inflector'
 require 'erb'
-require_relative './session'
-require_relative './flash'
+require_relative '../config/session'
+require_relative '../config/flash'
 
 class ControllerBase
   attr_reader :req, :res, :params
@@ -64,5 +64,5 @@ class ControllerBase
     self.send(name)
     already_built_response? ? nil : render(name)
   end
-  
+
 end

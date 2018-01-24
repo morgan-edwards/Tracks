@@ -1,7 +1,7 @@
 require 'rack'
-require_relative '../lib/controller_base'
-require_relative '../lib/router'
-require_relative '../lib/static'
+require_relative '../controllers/controller_base'
+require_relative '../config/router'
+require_relative '../middleware/static'
 
 class MyController < ControllerBase
   def go

@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Static
   attr_reader :app, :root, :file_server
 
@@ -33,6 +35,7 @@ class Static
   end
 
   def file_name(path)
+    debugger
     dir = File.dirname(__FILE__)
     File.join(dir, '..', path)
   end
@@ -46,8 +49,8 @@ class Static
       res.write(file)
       return res
     else
-      dir_path = File.dirname(__FILE__)
-      template_name = File.join(dir_path, "templates", "404.html.erb")
+      dir_path = File.dirname(__FILE__)[0..-11]
+      template_name = File.join(dir_path, "views", "templates", "404.html.erb")
       template = File.read(template_name)
       body = ERB.new(template).result(binding)
       ['404', {'Content-type' => 'text/html'}, [body]]
