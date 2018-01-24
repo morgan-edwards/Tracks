@@ -5,7 +5,7 @@ require 'erb'
 require_relative '../config/session'
 require_relative '../config/flash'
 
-class ControllerBase
+class TracksController
   attr_reader :req, :res, :params
 
   def initialize(req, res, route_params = {})

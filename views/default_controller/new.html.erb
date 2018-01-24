@@ -1,0 +1,11 @@
+<form action="/thing" method="POST">
+  <label>Name
+    <input type="text" name="thing[name]" value="<%= @thing.name %>">
+  </label>
+
+  <label>Text
+    <input type="text" name="thing[text]" value="<%= @thing.text %>">
+  </label>
+
+  <input type="submit">
+</form>

@@ -1,7 +1,8 @@
-require_relative 'db_connection'
+require_relative '../db/db_connection'
+require_relative 'associatable'
 require 'active_support/inflector'
 
-class ModelBase
+class TracksModel
   extend Associatable
   def self.columns
     return @columns if @columns

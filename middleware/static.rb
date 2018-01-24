@@ -35,7 +35,6 @@ class Static
   end
 
   def file_name(path)
-    debugger
     dir = File.dirname(__FILE__)
     File.join(dir, '..', path)
   end
